@@ -4,6 +4,7 @@
    
     <%= link_to "Edit your profile", edit_user_path(current_user) %>
     <%= link_to "View your profile",user_path(current_user) %>
+     <%= link_to "create a new article", new_article_path %>
  
 <% elsif !logged_in? %>
      <%= link_to 'Log in', login_path %>
@@ -11,7 +12,8 @@
       <%= link_to 'sig nup', signup_path %>
 <% else %>
     <div align="right"><%= link_to 'Log out', logout_path, method: :delete %></div>
- <% end %>    
+ <% end %>
+
 <table>
     <tr>
         <th>Title</th>
@@ -32,3 +34,4 @@
     </tr>
     <%end%>
 </table>
+
