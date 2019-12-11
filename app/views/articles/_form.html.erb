@@ -7,6 +7,18 @@
 </ul>
 <% end %>
 
+<% if logged_in? %>
+    <div align="right"><%= link_to 'Log out', logout_path, method: :delete %></div>
+   
+    <%= link_to "Edit your profile", edit_user_path(current_user) %>
+    <%= link_to "View your profile",user_path(current_user) %>
+ 
+<% else %>
+     <%= link_to 'Log in', login_path %>
+    
+      <%= link_to 'sig nup', signup_path %>
+ <% end %>   
+ 
 <%= form_for @article do |f| %>
     <p>
         
