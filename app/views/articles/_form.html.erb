@@ -56,6 +56,16 @@
         <%= f.text_area :description %>
     </p>
     <p>
+        <div class= "row">
+            <div class = "col-sm-offset-2 col-sm-10">
+                 <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |cb|%>
+                 <% cb.label(class: "checkbox-inline input_check") {cb.check_box(class: "checkbox") + cb.text} %>
+                 <% end %>
+            </div>
+        </div>
+       
+    </p>
+    <p>
         <%= f.submit %>
     </p>
 

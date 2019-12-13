@@ -26,12 +26,18 @@
         <td><%= article.title %></td>
         <td><%= article.description %></td>
         <td><%= link_to 'Show', article_path(article)%> </td>
+       
+        <td><small>Created by: <%= article.user.username if article.user%>, <%= time_ago_in_words(article.created_at)%> ago , 
+        last updated <%= time_ago_in_words(article.updated_at)%> ago </small></td>
+         <% if article.categories.any? %>
+            <td><small>Categories: <%= render article.categories %></small></td>
+        
+            
+        <% end %>
         <% if logged_in? && (current_user == article.user || current_user.admin?) %>
             <td><%= link_to 'Edit', edit_article_path(article) %> </td>
             <td><%= link_to'Delete', article_path(article), method: :delete, data:{confirm: "Are you sure?"}%></td>
         <% end %>
-        <td><small>Created by: <%= article.user.username if article.user%>, <%= time_ago_in_words(article.created_at)%> ago , 
-        last updated <%= time_ago_in_words(article.updated_at)%> ago </small></td>
        
     </tr>
     <%end%>
